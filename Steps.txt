@@ -1,0 +1,7 @@
+[1] - Install NodeJs
+[2] - be NodeJs it's Installed  "Cheeck from Terminal" node
+[3] - Install Typescript
+[4] - Be Typescript it's Installed "Cheeck from Terminal" tsc
+[5] - Create TS File
+[6] - Compile JS File
+[7] - Check TS Playground
