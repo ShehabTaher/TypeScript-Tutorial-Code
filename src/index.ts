@@ -371,25 +371,474 @@ Video [22] Interface Declaration
 -> Use Read Only andOptional Operator
 */
 
-interface User {
-    id?: number,
-    readonly username: string,
-    country: string
-}
-let user: User = {
-    id: 1,
-    username: "shehab",
-    country: "Egypt"
-}
+// interface User {
+//     id?: number,
+//     readonly username: string,
+//     country: string
+// }
+// let user: User = {
+//     id: 1,
+//     username: "shehab",
+//     country: "Egypt"
+// }
 
-// user.username = "Momen"
-user.country = "USA"
+// // user.username = "Momen"
+// user.country = "USA"
 
-console.log(user)
+// console.log(user)
 
-function getData(data: User) {
-    // console.log(`Id is ${data.id}`)
-    console.log(`Id is ${data.username}`)
-    console.log(`Id is ${data.country}`)
-}
-getData({id:2,username:"Taher",country:"KSA"})
+// function getData(data: User) {
+//     // console.log(`Id is ${data.id}`)
+//     console.log(`Id is ${data.username}`)
+//     console.log(`Id is ${data.country}`)
+// }
+// getData({id:2,username:"Taher",country:"KSA"})
+
+
+/*
+Video [23] Interface Methods & Params
+*/
+
+
+// interface User {
+//     id: number,
+//     username: string,
+//     country: string,
+//     sayHello(): string,
+//     sayWelcome: () => string,
+//     getDouble(num: number): number
+// }
+// let user: User = {
+//     id: 1,
+//     username: "shehab",
+//     country: "Egypt",
+//     sayHello() {
+//         return `Hello ${this.username}`
+//     },
+//     sayWelcome: () => {
+//         return `Welcome ${user.username}`
+//     },
+//     getDouble(n) {
+//         return n * 2
+//     }
+// }
+
+
+
+// console.log(user.id)
+// console.log(user.sayHello())
+// console.log(user.sayWelcome())
+// console.log(user.getDouble(4))
+
+/*
+Video [24] Interface and ReOpen
+-> Reopen The Interface And Use Cases
+*/
+
+// //Home Page
+// interface Settings {
+//    readonly theme: boolean,
+//     font: string,
+// }
+// //Articles Page 
+// interface Settings {
+//     sidebar: boolean,
+// }
+// //Contact Page 
+// interface Settings {
+//     external: boolean
+// }
+
+// let userSettings: Settings = {
+//     theme: true,
+//     font: "Arial",
+//     sidebar: false,
+//     external: true,
+// }
+
+/*
+Video [25] Interface Extend
+*/
+
+// interface User {
+//     id: number,
+//     name: string,
+//     country: string
+// }
+
+// interface Moderator {
+//     role: string | number
+// }
+
+// interface Admin extends User, Moderator {
+//     protect: boolean,
+// }
+// let user: Admin = {
+//     id: 30,
+//     name: "Shehab",
+//     country: "Saudi Arabia",
+//     role: 1,
+//     protect: true
+// }
+
+/*
+Video [26] Interface Vs Type Aliases
+-> Take a Look on HTMLElement Interface
+*/
+
+// let el = document.getElementById("id") as HTMLElement
+// //Home Page
+// interface Settings {
+//    readonly theme: boolean,
+//     font: string,
+// }
+// //Articles Page 
+// interface Settings {
+//     sidebar: boolean,
+// }
+// //Contact Page 
+// interface Settings {
+//     external: boolean
+// }
+
+// let userSettings: Settings = {
+//     theme: true,
+//     font: "Arial",
+//     sidebar: false,
+//     external: true,
+// }
+
+/*
+Video [27] Class Type Annotations
+*/
+
+
+// class User {
+// u:string;
+// s:number;
+// msg:() => string;
+//     constructor(username : string, salary : number) {
+//         this.u = username;
+//         this.s = salary;
+//         this.msg = function() {
+//             return `Hello ${this.u}, Your Salary is ${this.s}`
+//         }
+//     }
+//     sayMsg(){
+//         return `Hello ${this.u}, Your Salary is ${this.s}`
+//     }
+// }
+
+// let userOne = new User("Shehab",6000)
+
+// console.log(userOne.u)
+// console.log(userOne.s)
+// console.log(userOne.msg())
+// console.log(userOne.sayMsg())
+
+/*
+Video [28] Class Access Modifiers & Paramters Properties
+    ->Public :    - All Members of Class in Typescript are Public
+                  - All Public Members Can be Accessed Anywhere Without Any Restrictions
+    ->Private :   - Members are Visible Only to that Class and are not Accessible outside the class
+    ->Protected : - same Like Private But Can Be Accessed using the Deriving Class
+    => TypeScript is a layer on top of JavaScript
+    => It Should Remove All Annotations And Although Access Modifiers "Private for Example"
+*/
+
+
+// class User {
+// msg:() => string;
+//     constructor(private username : string, protected salary : number , public readonly address:string) { 
+//         this.msg = function() {
+//             return `Hello ${this.username}, Your Salary is ${this.salary}`
+//         }
+//     }
+//     sayMsg(){
+//         return `Hello ${this.username}, Your Salary is ${this.salary}`
+//     }
+// }
+
+// let userOne = new User("Shehab",6000 , "cairo")
+
+// // console.log(userOne.username)
+// // console.log(userOne.salary)
+// console.log(userOne.msg())
+// console.log(userOne.sayMsg())
+
+
+
+/*
+Video [29] Class Get and Set Accessors
+*/
+
+
+// class User {
+// msg:() => string;
+//     constructor(private _username : string, public salary : number , public readonly address:string) { 
+//         this.msg = function() {
+//             return `Hello ${this._username}, Your Salary is ${this.salary}`
+//         }
+//     }
+//     sayMsg(){
+//         return `Hello ${this._username}, Your Salary is ${this.salary}`
+//     }
+//     get username():string {
+//         return this._username;
+//     }
+//     set username(value:string) {
+//         this._username = value;
+//     }
+// }
+
+// let userOne = new User("Shehab",6000 , "cairo")
+
+// console.log(userOne.username)
+// userOne.username="Taher"
+// console.log(userOne.username)
+// console.log(userOne.salary)
+// console.log(userOne.msg())
+// console.log(userOne.sayMsg())
+
+/*
+Video [30] Class Get and Set Accessors
+-> Don't use "name , length, call"
+*/
+
+// class User {
+//     static created: number = 0
+//     // private static created: number = 0
+//     static getCount(): void {
+//         console.log(`${this.created} Objects Created`)
+//     }
+//     constructor(public username: string) {
+//         User.created++
+//     }
+// }
+
+// let user1 = new User("Shehab")
+// let user2 = new User("Taher")
+// let user3 = new User("Mokhtar")
+// let user4 = new User("Hassan")
+// console.log(User.created)
+// User.getCount()
+
+/*
+Video [31] Class Implement Interface
+*/
+
+// interface Settings {
+//     theme: boolean,
+//     font?: string,
+//     save():void
+// }
+// class User implements Settings {
+// constructor(public usename:string , public theme:boolean, public font:string){}
+// save(): void {
+//     console.log("Saved")
+// }
+// update():void{
+//     console.log("Updated")
+// }
+// }
+
+// let userOne = new User("Shehab",true,"Open Sans")
+
+// console.log(userOne.usename)
+// console.log(userOne.font)
+
+// userOne.save()
+// userOne.update()
+
+/*
+Video [32] Abstract Classes and Members
+->We can't Create an Instance of an abstract Class
+*/
+
+// abstract class Food {
+//     constructor(public title: string) { }
+//     abstract getCookingTime(): void
+// }
+// class Pizza extends Food {
+//     constructor(title:string, public price:number){
+//         super(title)
+//     }
+//     getCookingTime(): void {
+//         console.log("cooking Time For Pizza Is 1 Hour")
+//     }
+// }
+// class Burger extends Food {
+//     constructor(title:string, public price:number){
+//         super(title)
+//     }
+//     getCookingTime(): void {
+//         console.log("cooking Time For Burger Is Half Hour")
+//     }
+// }
+
+// let pizzaOne = new Pizza("cheese Pizza",100)
+
+// console.log(pizzaOne.title)
+// console.log(pizzaOne.price)
+// pizzaOne.getCookingTime()
+
+/*
+Video [33] Polymorphism & Method Override
+-> Polymorphism :    - Classes Have The Same Methods But Different Implementations
+-> Method Override : - Allowing Child Class To Provide Implementation Of Method In Parent Class
+                     - a Method In Child Class must have same name as Parent Class
+-> noImplicitOverride
+*/
+
+// class Player{
+//     constructor(public name:string){}
+//      attack():void{
+//         console.log("attacking Now")
+//     }
+// }
+
+// class Amazon extends Player{
+//     constructor( name:string, public spears:number){
+//         super(name)
+//     }
+//     // override attack(): void {
+//     attack(): void {
+//         super.attack()
+//         console.log("attacking With Spear")
+//         this.spears -= 1
+//     }
+// }
+// class Barbarian extends Player{
+//     constructor(name:string, public axeDurability:number){
+//         super(name)
+//     }
+//     // override attack(): void {
+//         attack(): void {
+//         // super.attack()
+//         console.log("attacking With Axe")
+//         this.axeDurability -= 1
+//     }
+// }
+
+
+// let barOne = new Barbarian("shehab",100)
+// console.log(barOne.name)
+// barOne.attack()
+// console.log(barOne.axeDurability)
+
+/*
+Video [34] Generics
+-> Help Write A reusable Code
+-> Allow to pass type As A parameter to Another Type
+-> You will be Able to Deal With Multiple Type Without Using " : Any Type "
+-> We Can Create : - Generics Classes
+                   - Generics Functions
+                   - Generics Methos
+                   - Generics Interfaces
+*/
+
+// function returnNumber (val:number) : number {
+//     return val
+// }
+// function returnString (val:string) : string {
+//     return val
+// }
+// function returnBoolean (val:boolean) : boolean {
+//     return val
+// }
+
+// function returnType <T>(val:T):T{
+//     return val
+// }
+
+// console.log(returnType<boolean>(true))
+// console.log(returnType<number>(100))
+// console.log(returnType<string>("shehab"))
+// console.log(returnType<number[]>([1,2,3,4]))
+
+
+/*
+Video [35] Generics Multiple Types
+-> Arrow Function
+-> Multiple Types
+*/
+
+// function returnType<T>(val: T): T {
+//     return val
+// }
+
+// console.log(returnType<string>("shehab"))
+// console.log(returnType<number>(100))
+
+// const returnTypeArrowSyntax = <T>(val: T): T => val
+
+// console.log(returnTypeArrowSyntax<string>("shehab"))
+// console.log(returnTypeArrowSyntax<number>(100))
+
+// function testType<T>(val: T): string {
+//     return `the Value Is ${val} and the Type Is ${typeof val}`
+// }
+
+// console.log(testType<string>("shehab"))
+// console.log(testType<number>(100))
+
+// function multipleType<T, S>(valueOne: T, valueTwo: S): string {
+//     return `the First Value Is ${valueOne} and the Second Value Is ${valueTwo}`
+// }
+
+// console.log(multipleType<string,number>("shehab",100))
+// console.log(multipleType<number,boolean>(100,true))
+
+/*
+Video [36] Generics Classes
+*/
+
+
+// class User <T = string> {
+//     constructor(public value:T){}
+//     show(msg:T): void{
+//         console.log(`${msg} - ${this.value}`)
+//     }
+// }
+
+// let userOne = new User("Shehab")
+// console.log(userOne.value)
+// userOne.show("User One")
+
+// let userTwo= new User<number | string>(100)
+// console.log(userTwo.value)
+// userTwo.show("User Two")
+
+/*
+Video [37] Generics Classes and Interfaces
+*/
+
+
+// interface Book {
+//     itemType: string,
+//     title: string,
+//     isbn: number
+// }
+
+// interface Game {
+//     itemType: string,
+//     title: string,
+//     style: string,
+//     price: number
+// }
+
+// class Collection<T> {
+//     public data: T[] = []
+//     add(item: T): void {
+//         this.data.push(item)
+//     }
+// }
+
+// let itemOne = new Collection<Book>()
+// itemOne.add({itemType:"Book",title:"atomic Habits",isbn:1234})
+// itemOne.add({itemType:"Book",title:"Follow Your Heart",isbn:5678})
+// console.log(itemOne)
+
+// let itemTwo = new Collection<Game>()
+// itemTwo.add({itemType:"Game",title:"atomic Habits",style:"action",price:1000})
+// console.log(itemTwo)
